@@ -18,14 +18,14 @@ export class TasksController {
 
   @Get()
   //   getTask(): {} { //devolver objeto
-//   getTasks(): Task[] {
-//     //   getTask(): { tasks: string } {
-//     // return { tasks: 'hello world' };
-//     return this.taskService.getTasks();
-//   }
-getTasks(): Promise<Task[]>{
+  //   getTasks(): Task[] {
+  //     //   getTask(): { tasks: string } {
+  //     // return { tasks: 'hello world' };
+  //     return this.taskService.getTasks();
+  //   }
+  getTasks(): Promise<Task[]> {
     return this.taskService.getTasks();
-}
+  }
 
   @Get(':taskId')
   getTask(@Param('taskId') taskId: string) {
@@ -34,10 +34,13 @@ getTasks(): Promise<Task[]>{
   }
 
   @Post()
-  createTasks(@Body() task: createTasks): string {
-    const { nombre, description } = task;
-    console.log(nombre, description);
-    return 'creating a taskkk';
+  //   createTasks(@Body() task: createTasks): string {
+  //     const { nombre, description } = task;
+  //     console.log(nombre, description);
+  //     return 'creating a taskkk';
+  //   }
+  createTask(@Body() task: createTasks): Promise<Task> {
+    return this.taskService.createTask(task);
   }
 
   @Put(':id')
